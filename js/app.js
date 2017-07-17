@@ -15,5 +15,21 @@
 				{ id:4, name: '复习', isCompleted:false},
 			];
 			vm.todoList=todoList;
+
+			//2 添加任务
+			vm.taskName='';
+			vm.add=function(){
+				if(vm.taskName.trim()===''){
+					return;
+				}
+				var id,length=todoList.length;
+				if(length<=0){
+					id=1;
+				}else{
+					id=todoList[length-1]+1;
+				}
+				todoList.push({ id:id, name:vm.taskName, isCompleted:false });
+				vm.taskName='';
+			}
 		}
 })(angular);
