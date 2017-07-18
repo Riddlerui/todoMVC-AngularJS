@@ -26,10 +26,20 @@
 				if(length<=0){
 					id=1;
 				}else{
-					id=todoList[length-1]+1;
+					id=todoList[length-1].id+1;
 				}
 				todoList.push({ id:id, name:vm.taskName, isCompleted:false });
 				vm.taskName='';
+			}
+
+			// 3.删除一条任务
+			vm.del=function(id){
+				for(var i=0;i<todoList.length;i++){
+					if(todoList[i].id===id){
+						todoList.splice(i,1);
+						break;
+					}
+				}
 			}
 		}
 })(angular);
