@@ -26,7 +26,7 @@
 				if(length<=0){
 					id=1;
 				}else{
-					id=todoList[length-1].id+1;
+					id=todoList[todoList.length-1].id+1;
 				}
 				todoList.push({ id:id, name:vm.taskName, isCompleted:false });
 				vm.taskName='';
@@ -61,6 +61,33 @@
 				}
 			};
 
-			
+			//6 清除已完成的任务
+			//保留未完成的任务
+			vm.delCompleted=function(){
+				var tempArr=[];
+				for(var i=0; i<todoList.length;i++){
+					if(!todoList[i].isCompleted){
+						tempArr.push(todoList[i]);
+					}
+				}
+				
+				//赋值
+				// vm.todoList=todoList=tempArr;
+
+				//清空数组
+				todoList.length=0;
+				[].push.apply(todoList,tempArr);
+			};
+			//6.1 控制清除任务按钮的展示和隐藏
+			vm.isShow = function(){
+				var ret=false;
+				for(var i=0;i<todoList.length;i++){
+					if(todoList[i].isCompleted){
+						ret=true;
+						break;
+					}
+				}
+				return ret;
+			}
 		}
 })(angular);
