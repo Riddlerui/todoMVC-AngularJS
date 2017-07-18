@@ -70,7 +70,7 @@
 						tempArr.push(todoList[i]);
 					}
 				}
-				
+
 				//赋值
 				// vm.todoList=todoList=tempArr;
 
@@ -87,7 +87,22 @@
 						break;
 					}
 				}
+				// ret=todoList.some(function(v){
+				// 	v.isCompleted==true;
+				// 	break;
+				// })
 				return ret;
 			}
+
+			// 7 显示未完成任务数
+			vm.getCount=function(){
+				var count=0;
+				for(var i=0;i<todoList.length; i++){
+					if(!todoList[i].isCompleted){
+						count++;
+					}
+				}
+				return count;
+			};
 		}
 })(angular);
