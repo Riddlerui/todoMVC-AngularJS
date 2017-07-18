@@ -43,6 +43,13 @@
 
 		//5 切换任务选中状态(批量)
 		vm.isCheckedAll = false;
+		//单个
+		// vm.checked=function(isCompleted){
+		// 	isCompleted=!isCompleted;
+		// 	TodoSrv.save();
+		// };
+		vm.checked=TodoSrv.checked;
+		//批量
 		vm.checkAll = function () {
 			TodoSrv.checkAll(vm.isCheckedAll);
 		};
@@ -56,7 +63,7 @@
 
 		// 7 显示未完成任务数
 		vm.getCount = TodoSrv.getCount;
-		
+
 		// 8 显示不同状态的任务 以及当前任务高亮处理
 		vm.status = false;
 		// vm.selectedAll=function(){

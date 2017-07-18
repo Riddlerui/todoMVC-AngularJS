@@ -27,7 +27,7 @@
                 <!-- 通过判断editingId的值是否与当前项id 的值是否相同来判断是否添加类 -->
                 <li ng-class="{completed:todo.isCompleted, editing:editingId === todo.id}" ng-repeat="todo in todoList | filter: { isCompleted:status } track by $index">
                     <div class="view">
-                        <input class="toggle" type="checkbox" ng-model="todo.isCompleted">
+                        <input class="toggle" type="checkbox" ng-model="todo.isCompleted" ng-click="checked(todo.isCompleted)">
                         <label ng-bind="todo.name" ng-dblclick="edit(todo.id)"></label>
                         <!--将当前项的id作为del方法的参数传入-->
                         <button class="destroy" ng-click="del(todo.id)"></button>

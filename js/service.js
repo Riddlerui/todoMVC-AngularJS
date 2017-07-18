@@ -55,6 +55,11 @@
 				that.save();
 			};
 
+			//单选
+			this.checked=function(isCompleted){
+				isCompleted=!isCompleted;
+				that.save();
+			}
 			//全选
 			this.checkAll = function (isCheckedAll) {
 				for (var i = 0; i < todoList.length; i++) {
@@ -70,16 +75,14 @@
 					if (!todoList[i].isCompleted) {
 						tempArr.push(todoList[i]);
 					}
-				}
-
-				//赋值
-				// vm.todoList=todoList=tempArr;
-
+				}		
 				//清空数组
 				todoList.length = 0;
 				[].push.apply(todoList, tempArr);
+
 				that.save();
 			};
+
 			//清除按钮的显示与隐藏
 			this.isShow = function () {
 				var ret = false;
@@ -102,9 +105,6 @@
 				}
 				return count;
 			};
-
 		}]);
-
-
 
 })(angular);
