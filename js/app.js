@@ -104,5 +104,19 @@
 				}
 				return count;
 			};
+
+			// 8 显示不同状态的任务 以及当前任务高亮处理
+			vm.status=false;
+			vm.selectedAll=function(){
+				vm.status=undefined;
+			};
+			vm.selectedActive=function(){
+				vm.status=false;
+			};
+			vm.selectedCompleted=function(){
+				vm.status=true;
+			};
+
+			//
 		}
 })(angular);
