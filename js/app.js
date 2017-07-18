@@ -50,6 +50,17 @@
 			};
 			vm.editSave=function(){
 				vm.editingId=-1;
-			}
+			};
+
+			//5 切换任务选中状态(批量)
+			vm.isCheckedAll=false;
+			vm.checkAll=function(){
+				console.log(1)
+				for(var i=0;i<todoList.length;i++){
+					todoList[i].isCompleted=vm.isCheckedAll;
+				}
+			};
+
+			
 		}
 })(angular);
