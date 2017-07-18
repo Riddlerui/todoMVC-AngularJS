@@ -2,9 +2,9 @@
 	'use strict';
 	angular
 		.module('todoApp',[])
-		.controller('todoController',['$scope', TodoController])
+		.controller('todoController',['$scope','$location', TodoController])
 	
-		function TodoController($scope){
+		function TodoController($scope,$location){
 			// Your starting point. Enjoy the ride!
 			//1 展示列表
 			var vm =$scope;
@@ -107,16 +107,31 @@
 
 			// 8 显示不同状态的任务 以及当前任务高亮处理
 			vm.status=false;
-			vm.selectedAll=function(){
-				vm.status=undefined;
-			};
-			vm.selectedActive=function(){
-				vm.status=false;
-			};
-			vm.selectedCompleted=function(){
-				vm.status=true;
-			};
+			// vm.selectedAll=function(){
+			// 	vm.status=undefined;
+			// };
+			// vm.selectedActive=function(){
+			// 	vm.status=false;
+			// };
+			// vm.selectedCompleted=function(){
+			// 	vm.status=true;
+			// };
 
-			//
+			// 9 根据URL变化显示相应任务
+			vm.location=$location;
+			vm.$watch('location.url()',function(newVal,oldVal){
+				console.log(newVal);
+				switch(newVal){
+					case '/active':
+						vm.status=false;
+						break;
+					case '/completed':
+						vm.status=true;
+						break;
+					default:
+						vm.status=undefined;
+						break;
+				}
+			});
 		}
 })(angular);
